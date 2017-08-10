@@ -8,6 +8,9 @@
       location = "group:LICENSE">
    </FileRef>
    <FileRef
+      location = "group:NTToolKit/NTToolKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UIWebViewController/UIWebViewController.xcodeproj">
    </FileRef>
    <FileRef
