@@ -4,20 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>UIWebViewController.xcscheme</key>
+		<key>UIPageTabBarController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>38C991E11F3AC8E400A2F1C7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>38C991FB1F3B9EE800A2F1C7</key>
+		<key>38C992591F3C17C700A2F1C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,4 +7,13 @@
    <FileRef
       location = "group:LICENSE">
    </FileRef>
+   <FileRef
+      location = "group:UIWebViewController/UIWebViewController.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIDrawerController/UIDrawerController.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIPageTabBarController/UIPageTabBarController.xcodeproj">
+   </FileRef>
 </Workspace>
