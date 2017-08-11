@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    
     let padding: CGFloat = 8.0
     private let cellIdentifier = "UniqueCellIdentifier"
@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     lazy var collectionLayout: UICollectionViewStretchyLayout = { [unowned self] in
         let layout = UICollectionViewStretchyLayout()
+        layout.delegate = self
         layout.itemSpacing = self.padding
         layout.itemSize = CGSize(width: self.view.bounds.width - (self.padding * 2.0), height: 64.0)
         layout.sectionInset = UIEdgeInsets(top: self.padding, left: self.padding, bottom: 32.0, right: self.padding)
@@ -23,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }()
     
     lazy var collectionView: UICollectionView = { [unowned self] in
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -34,7 +35,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         view.addSubview(collectionView)
         _ = [
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -67,5 +68,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! UIStretchyBannerView
         view.imageView.image = #imageLiteral(resourceName: "Background")
         return view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 100
     }
 }

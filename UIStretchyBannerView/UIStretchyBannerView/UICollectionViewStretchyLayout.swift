@@ -29,7 +29,9 @@ import UIKit
 
 let UIStretchyBannerViewKind = "UIStretchyBannerViewKind"
 
-class UICollectionViewStretchyLayout: UICollectionViewLayout {
+open class UICollectionViewStretchyLayout: UICollectionViewLayout {
+    
+    open weak var delegate: UICollectionViewDelegateFlowLayout?
     
     let startingHeaderHeight: CGFloat = 150
     var sectionInset = UIEdgeInsets.zero
@@ -38,7 +40,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
     
     var attributes: [UICollectionViewLayoutAttributes] = []
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         
         guard let collectionView = collectionView else {
@@ -61,11 +63,11 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         }
     }
     
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let visibleAttributes = attributes.filter { attribute -> Bool in
             return rect.contains(attribute.frame) || rect.intersects(attribute.frame)
         }
@@ -87,10 +89,12 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         return visibleAttributes
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let collectionView = collectionView else {
             return nil
         }
+        
+//        let sectionInset = delegate?.collectionView(collectionView, layout: self, insetForSectionAt: indexPath.section)
         
         var sectionOriginY = startingHeaderHeight + sectionInset.top
         if indexPath.section > 0 {
@@ -107,7 +111,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         return attribute
     }
     
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let collectionView = collectionView else {
             return nil
         }
@@ -117,7 +121,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         return attribute
     }
     
-    override var collectionViewContentSize: CGSize {
+    override open var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else {
             return .zero
         }
