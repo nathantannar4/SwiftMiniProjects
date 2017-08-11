@@ -2,10 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:README.md">
-   </FileRef>
-   <FileRef
-      location = "group:LICENSE">
+      location = "group:UIStretchyBannerView/UIStretchyBannerView.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:NTToolKit/NTToolKit.xcodeproj">
@@ -18,5 +15,11 @@
    </FileRef>
    <FileRef
       location = "group:UIPageTabBarController/UIPageTabBarController.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
    </FileRef>
 </Workspace>
