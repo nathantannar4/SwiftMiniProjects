@@ -29,7 +29,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = URL(string: urls[indexPath.row])!
         let vc = UIWebViewController(url: url)
-//        vc.isUITranslucent = false
+        vc.isUITranslucent = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

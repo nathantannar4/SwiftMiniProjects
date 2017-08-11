@@ -54,6 +54,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
     
     open var toolbar: UIToolbar! = {
         let toolbar = UIToolbar()
+        toolbar.isTranslucent = false
         return toolbar
     }()
     
@@ -149,6 +150,10 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         guard let url = url else {
             return
         }
+        
+        animateNavBar(to: 20)
+        updateBarButtonItems(1)
+        
     
         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url] as [Any], applicationActivities: [OpenInSafariActivity()])
         activityViewController.popoverPresentationController?.barButtonItem = sender
@@ -176,7 +181,6 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         webView.resignFirstResponder()
         animateNavBar(to: 20)
         updateBarButtonItems(1)
-        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     // MARK: - WebView Navigation
@@ -217,7 +221,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         else {
             let size = min(20, max(-size, frame.origin.y - scrollDiff))
             frame.origin.y = size
-            updateWebViewFrameYOrigin(size - 23)
+            updateWebViewFrameYOrigin(size - 20)
         }
         
         navigationController?.navigationBar.frame = frame
