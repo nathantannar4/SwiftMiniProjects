@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIStretchyBannerView/UIStretchyBannerView/UICollectionViewStretchyLayout.swift"
-            timestampString = "524112580.630117"
+            timestampString = "524116305.084376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "prepare()"
             landmarkType = "7">
          </BreakpointContent>

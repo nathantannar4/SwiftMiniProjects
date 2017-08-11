@@ -30,3 +30,5 @@ pageVC.tabBar.tintColor = UIColor.black
 let vc = UIWebViewController(url: url)
 vc.isUITranslucent = false
 ```
+
+### UICollectionViewStretchyLayout

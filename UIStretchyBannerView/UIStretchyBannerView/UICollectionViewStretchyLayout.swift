@@ -32,7 +32,6 @@ let UIStretchyBannerViewKind = "UIStretchyBannerViewKind"
 class UICollectionViewStretchyLayout: UICollectionViewLayout {
     
     let startingHeaderHeight: CGFloat = 150
-    
     var sectionInset = UIEdgeInsets.zero
     var itemSize = CGSize.zero
     var itemSpacing: CGFloat = 0.0
@@ -42,20 +41,14 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
         
-        // Start with a fresh array of attributes
-        attributes = []
-        
-        // Can't do much without a collectionView.
         guard let collectionView = collectionView else {
             return
         }
         
-        let numberOfSections = collectionView.numberOfSections
+        attributes = []
         
-        for section in 0..<numberOfSections {
-            let numberOfItems = collectionView.numberOfItems(inSection: section)
-            
-            for item in 0..<numberOfItems {
+        for section in 0..<collectionView.numberOfSections {
+            for item in 0..<collectionView.numberOfItems(inSection: section) {
                 let indexPath = IndexPath(item: item, section: section)
                 if let attribute = layoutAttributesForItem(at: indexPath) {
                     attributes.append(attribute)
@@ -63,8 +56,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
             }
         }
         
-        let headerIndexPath = IndexPath(item: 0, section: 0)
-        if let headerAttribute = layoutAttributesForSupplementaryView(ofKind: UIStretchyBannerViewKind, at: headerIndexPath) {
+        if let headerAttribute = layoutAttributesForSupplementaryView(ofKind: UIStretchyBannerViewKind, at: IndexPath(item: 0, section: 0)) {
             attributes.append(headerAttribute)
         }
     }
@@ -78,15 +70,10 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
             return rect.contains(attribute.frame) || rect.intersects(attribute.frame)
         }
         
-        // Check for our Stretchy Header
-        // We want to find a collectionHeader and stretch it while scrolling.
-        // But first lets make sure we've scrolled far enough.
-        let offset = collectionView?.contentOffset ?? CGPoint.zero
-        
-        if offset.y < 0 {
-            let extraOffset = fabs(offset.y)
+        let offset = collectionView?.contentOffset.y ?? 0
+        if offset < 0 {
+            let extraOffset = fabs(offset)
             
-            // Find our collectionHeader and stretch it while scrolling.
             let stretchyHeader = visibleAttributes.filter { attribute -> Bool in
                 return attribute.representedElementKind == UIStretchyBannerViewKind
             }.first
@@ -97,7 +84,6 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
                 collectionHeader.frame.origin.y = collectionHeader.frame.origin.y - extraOffset
             }
         }
-        
         return visibleAttributes
     }
     
@@ -106,13 +92,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
             return nil
         }
         
-        let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        
-        
-        
         var sectionOriginY = startingHeaderHeight + sectionInset.top
-        
-        
         if indexPath.section > 0 {
             let previousSection = indexPath.section - 1
             let lastItem = collectionView.numberOfItems(inSection: previousSection) - 1
@@ -122,8 +102,8 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         
         let itemOriginY = sectionOriginY + CGFloat(indexPath.item) * (itemSize.height + itemSpacing)
         
+        let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attribute.frame = CGRect(x: sectionInset.left, y: itemOriginY, width: itemSize.width, height: itemSize.height)
-        
         return attribute
     }
     
@@ -139,7 +119,7 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
     
     override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else {
-            return CGSize.zero
+            return .zero
         }
         
         let numberOfSections = collectionView.numberOfSections
@@ -148,9 +128,8 @@ class UICollectionViewStretchyLayout: UICollectionViewLayout {
         let lastItem = numberOfItems - 1
         
         guard let lastCell = layoutAttributesForItem(at: IndexPath(item: lastItem, section: lastSection)) else {
-            return CGSize.zero
+            return .zero
         }
-        
         return CGSize(width: collectionView.frame.width, height: lastCell.frame.maxY + sectionInset.bottom)
     }
 }
