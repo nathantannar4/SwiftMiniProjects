@@ -27,39 +27,49 @@
 
 import UIKit
 
-class UIStretchyBannerView: UICollectionReusableView {
+open class UIStretchyBannerView: UICollectionReusableView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        clipsToBounds = true
-        
-        addSubview(imageView)
-        
-        let views = ["imageView": imageView]
-        
-        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[imageView]|", options: [], metrics: nil, views: views))
-        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[imageView]|", options: [], metrics: nil, views: views))
+    open var image: UIImage? {
+        get {
+            return imageView.image
+        }
+        set {
+            imageView.image = newValue
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("Storyboards Ugh")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        imageView.image = nil
-    }
-    
-    //==========================================================================
-    // MARK: - Views
-    //==========================================================================
-    
-    lazy var imageView: UIImageView = {
+    open var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
+    // MARK: - Initialization
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    fileprivate func setup() {
+        clipsToBounds = true
+        addSubview(imageView)
+        _ = [
+            imageView.leftAnchor.constraint(equalTo: leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: rightAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ].map { $0.isActive = true }
+    }
+    
+    override open func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
 }
