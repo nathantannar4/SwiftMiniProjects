@@ -56,7 +56,11 @@ open class UIPageTabBarController: UIViewController {
     }
     
     /// An array holding the viewControllers used by the UIPageViewController
-    public var viewControllers: [UIViewController] = []
+    public var viewControllers: [UIViewController] = [] {
+        didSet {
+            tabBar.collectionView.reloadData()
+        }
+    }
     
     public lazy var pageViewController: UIPageViewController = { [weak self] in
         
