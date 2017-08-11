@@ -4,14 +4,16 @@
 Inspired by the many "30 Swift Projects" I thought it best to break create a single workspace and repo for all mini projects I start. These are not projects focused on building an app but rather classes built to be easily integratable with future apps.
 
 ## Contents
+- Custom common controllers 
 
-### UIDrawerController
+
+## Details
+
+#### UIDrawerController
 
 ```swift
 // MARK: - Initialization
-public required init(centerViewController: UIViewController, 
-					   leftViewController: UIViewController?,
-					  rightViewController: UIViewController?)
+public required init(centerViewController: UIViewController, leftViewController: UIViewController?, rightViewController: UIViewController?)
 					  
 // MARK: - Properties
 
@@ -73,7 +75,7 @@ public extension UIViewController {
 
 ### UIWebViewController
 
-Use the `isUITranslucent` property to easily set all of the UI elements `isTranslucent`
+Use the `isUITranslucent` property to easily set all of the UI elements `isTranslucent`. Supports URL parsing to make see if its valid and if not performs a Google search with the input. Similar to how one would use Chrome or Safari.
 
 <img src="./UIWebViewController/Demo.gif" width="242" height="432">
 

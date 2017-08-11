@@ -27,20 +27,18 @@
 
 import UIKit
 import WebKit
-import NTToolKit
 
-@IBDesignable
 open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBarDelegate, UIScrollViewDelegate {
     
-    @IBInspectable open var webView: UIWebView! = {
+    open var webView: UIWebView! = {
         let webView = UIWebView()
         webView.allowsInlineMediaPlayback = true
         webView.allowsLinkPreview = true
         return webView
     }()
-    @IBInspectable open var url: URL?
+    open var url: URL?
     
-    @IBInspectable open var urlBar: UISearchBar! = {
+    open var urlBar: UISearchBar! = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "URL/Search"
@@ -50,16 +48,16 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         searchBar.enablesReturnKeyAutomatically = true
         searchBar.backgroundColor = .clear
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        searchBar.isTranslucent = true
+        searchBar.isTranslucent = false
         return searchBar
     }()
     
-    @IBInspectable open var toolbar: UIToolbar! = {
+    open var toolbar: UIToolbar! = {
         let toolbar = UIToolbar()
         return toolbar
     }()
     
-    @IBInspectable open var isUITranslucent: Bool = false {
+    open var isUITranslucent: Bool = false {
         didSet {
             toolbar.isTranslucent = isUITranslucent
             urlBar.isTranslucent = isUITranslucent
@@ -101,14 +99,12 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         urlBar.delegate = self
         urlBar.sizeToFit()
         
-        navigationItem.rightBarButtonItem = navigationItem(#imageLiteral(resourceName: "icon_share"), action: #selector(UIWebViewController.handleShare(_:)))
-     
         toolbar.items = [
             navigationItem(#imageLiteral(resourceName: "icon_back"), action: #selector(UIWebViewController.goBack(_:))),
             UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil),
             navigationItem(#imageLiteral(resourceName: "icon_forward"), action: #selector(UIWebViewController.goForward(_:))),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            navigationItem(#imageLiteral(resourceName: "icon_safari"), action: #selector(UIWebViewController.openInSafari(_:)))
+            navigationItem(#imageLiteral(resourceName: "icon_share"), action: #selector(UIWebViewController.handleShare(_:)))
         ]
         view.addSubview(toolbar)
         
@@ -153,7 +149,8 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         guard let url = url else {
             return
         }
-        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url] as [Any], applicationActivities: nil)
+    
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url] as [Any], applicationActivities: [OpenInSafariActivity()])
         activityViewController.popoverPresentationController?.barButtonItem = sender
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
@@ -197,18 +194,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
             updateBarButtonItems(1)
         }
     }
-    
-    open func openInSafari(_ sender: UIBarButtonItem?) {
-        guard let url = url else {
-            return
-        }
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
-    
+
     // MARK: - UIScrollView
     
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {

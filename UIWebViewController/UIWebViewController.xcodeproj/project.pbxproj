@@ -14,6 +14,7 @@
 		38C991F51F3AC97100A2F1C7 /* UIWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C991F41F3AC97100A2F1C7 /* UIWebViewController.swift */; };
 		38C991F71F3AE51500A2F1C7 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C991F61F3AE51500A2F1C7 /* InputAccessoryView.swift */; };
 		38C992841F3C1EFC00A2F1C7 /* NTToolKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C992831F3C1EFC00A2F1C7 /* NTToolKit.framework */; };
+		38C992B81F3D863400A2F1C7 /* OpenInSafariActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C992B71F3D863400A2F1C7 /* OpenInSafariActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		38C991F41F3AC97100A2F1C7 /* UIWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWebViewController.swift; sourceTree = "<group>"; };
 		38C991F61F3AE51500A2F1C7 /* InputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryView.swift; sourceTree = "<group>"; };
 		38C992831F3C1EFC00A2F1C7 /* NTToolKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTToolKit.framework; path = "../NTToolKit/build/Debug-iphoneos/NTToolKit.framework"; sourceTree = "<group>"; };
+		38C992B71F3D863400A2F1C7 /* OpenInSafariActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenInSafariActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				38C991E71F3AC8E400A2F1C7 /* ViewController.swift */,
 				38C991F61F3AE51500A2F1C7 /* InputAccessoryView.swift */,
 				38C991F41F3AC97100A2F1C7 /* UIWebViewController.swift */,
+				38C992B71F3D863400A2F1C7 /* OpenInSafariActivity.swift */,
 				38C991E91F3AC8E400A2F1C7 /* Assets.xcassets */,
 				38C991EB1F3AC8E400A2F1C7 /* LaunchScreen.storyboard */,
 				38C991EE1F3AC8E400A2F1C7 /* Info.plist */,
@@ -169,6 +172,7 @@
 				38C991F51F3AC97100A2F1C7 /* UIWebViewController.swift in Sources */,
 				38C991F71F3AE51500A2F1C7 /* InputAccessoryView.swift in Sources */,
 				38C991E61F3AC8E400A2F1C7 /* AppDelegate.swift in Sources */,
+				38C992B81F3D863400A2F1C7 /* OpenInSafariActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
