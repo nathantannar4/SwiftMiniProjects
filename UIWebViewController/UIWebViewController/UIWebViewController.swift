@@ -27,6 +27,7 @@
 
 import UIKit
 import WebKit
+import NTToolKit
 
 @IBDesignable
 open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBarDelegate, UIScrollViewDelegate {
@@ -78,6 +79,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
     public convenience init(url: URL) {
         self.init(nibName: nil, bundle: nil)
         self.url = url
+        urlBar.text = url.absoluteString
         loadRequest(forURL: url)
     }
     
@@ -96,31 +98,17 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         
         navigationController?.navigationItem.leftBarButtonItem?.title = String()
         navigationItem.titleView = urlBar
-        
         urlBar.delegate = self
         urlBar.sizeToFit()
-        let shareImage = UIImage(named: "icon_share")?.withRenderingMode(.alwaysTemplate)
-        let shareButton = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(UIWebViewController.handleShare(_:)))
-        navigationItem.rightBarButtonItem = shareButton
+        
+        navigationItem.rightBarButtonItem = navigationItem(#imageLiteral(resourceName: "icon_share"), action: #selector(UIWebViewController.handleShare(_:)))
      
-        let backImage = UIImage(named: "icon_back")?.withRenderingMode(.alwaysTemplate)
-        let backItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(UIWebViewController.goBack(_:)))
-        
-        let forwardImage = UIImage(named: "icon_forward")?.withRenderingMode(.alwaysTemplate)
-        let forwardItem = UIBarButtonItem(image: forwardImage, style: .plain, target: self, action: #selector(UIWebViewController.goForward(_:)))
-        
-        let safariImage = UIImage(named: "icon_safari")?.withRenderingMode(.alwaysTemplate)
-        let safariItem = UIBarButtonItem(image: safariImage, style: .plain, target: self, action: #selector(UIWebViewController.openInSafari(_:)))
-        
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spaceItem.width = 20
-        
         toolbar.items = [
-            backItem,
-            spaceItem,
-            forwardItem,
+            navigationItem(#imageLiteral(resourceName: "icon_back"), action: #selector(UIWebViewController.goBack(_:))),
+            UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil),
+            navigationItem(#imageLiteral(resourceName: "icon_forward"), action: #selector(UIWebViewController.goForward(_:))),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            safariItem
+            navigationItem(#imageLiteral(resourceName: "icon_safari"), action: #selector(UIWebViewController.openInSafari(_:)))
         ]
         view.addSubview(toolbar)
         
@@ -141,12 +129,14 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
             toolbar.bottomAnchor.constraint(equalTo: inputView.bottomAnchor)
         ]
         _ = constraints.map{ $0.isActive = true }
-        webViewTopAnchor = constraints.first
     }
     
-    fileprivate var webViewTopAnchor: NSLayoutConstraint?
-    
     // MARK: - Helper Methods
+    
+    fileprivate func navigationItem(_ icon: UIImage, action: Selector) -> UIBarButtonItem {
+        let image = icon.withRenderingMode(.alwaysTemplate)
+        return UIBarButtonItem(image: image, style: .plain, target: self, action: action)
+    }
     
     @discardableResult
     public func loadRequest(forURL: URL?) -> Bool {
@@ -163,30 +153,10 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         guard let url = url else {
             return
         }
-        
-        let objectsToShare = [url] as [Any]
-        
-        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        
-        // This lines is for the popover you need to show in iPad
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url] as [Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
-        
-        // This line remove the arrow of the popover to show in iPad
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
-        
-        // Anything you want to exclude
-        activityViewController.excludedActivityTypes = [
-            UIActivityType.postToWeibo,
-            UIActivityType.print,
-            UIActivityType.assignToContact,
-            UIActivityType.saveToCameraRoll,
-            UIActivityType.postToFlickr,
-            UIActivityType.postToVimeo,
-            UIActivityType.postToTencentWeibo
-        ]
-        
-        
         present(activityViewController, animated: true, completion: nil)
     }
     

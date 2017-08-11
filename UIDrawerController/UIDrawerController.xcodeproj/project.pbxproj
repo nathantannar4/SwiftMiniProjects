@@ -12,6 +12,7 @@
 		38C9921F1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C9921D1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard */; };
 		38C9924F1F3C0F0E00A2F1C7 /* UIDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9924D1F3C0F0E00A2F1C7 /* UIDrawerController.swift */; };
 		38C992501F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9924E1F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift */; };
+		38C992871F3C1F0500A2F1C7 /* NTToolKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C992861F3C1F0500A2F1C7 /* NTToolKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		38C992201F3C0D3A00A2F1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38C9924D1F3C0F0E00A2F1C7 /* UIDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawerController.swift; sourceTree = "<group>"; };
 		38C9924E1F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawerMenuItem.swift; sourceTree = "<group>"; };
+		38C992861F3C1F0500A2F1C7 /* NTToolKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTToolKit.framework; path = "../NTToolKit/build/Debug-iphoneos/NTToolKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C992871F3C1F0500A2F1C7 /* NTToolKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				38C992161F3C0D3A00A2F1C7 /* UIDrawerController */,
 				38C992151F3C0D3A00A2F1C7 /* Products */,
+				38C992851F3C1F0500A2F1C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				38C992201F3C0D3A00A2F1C7 /* Info.plist */,
 			);
 			path = UIDrawerController;
+			sourceTree = "<group>";
+		};
+		38C992851F3C1F0500A2F1C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38C992861F3C1F0500A2F1C7 /* NTToolKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +308,7 @@
 				38C992251F3C0D3A00A2F1C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
