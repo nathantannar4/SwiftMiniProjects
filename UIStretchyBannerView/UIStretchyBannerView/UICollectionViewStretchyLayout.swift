@@ -33,12 +33,9 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
     
     open weak var delegate: UICollectionViewDelegateFlowLayout?
     
-    let startingHeaderHeight: CGFloat = 150
-    var sectionInset = UIEdgeInsets.zero
-    var itemSize = CGSize.zero
-    var itemSpacing: CGFloat = 0.0
+    open var stretchyBannerHeight: CGFloat = 200
     
-    var attributes: [UICollectionViewLayoutAttributes] = []
+    fileprivate var attributes: [UICollectionViewLayoutAttributes] = []
     
     override open func prepare() {
         super.prepare()
@@ -75,7 +72,7 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
         let offset = collectionView?.contentOffset.y ?? 0
         if offset < 0 {
             let extraOffset = fabs(offset)
-            
+
             let stretchyHeader = visibleAttributes.filter { attribute -> Bool in
                 return attribute.representedElementKind == UIStretchyBannerViewKind
             }.first
@@ -94,9 +91,9 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
             return nil
         }
         
-//        let sectionInset = delegate?.collectionView(collectionView, layout: self, insetForSectionAt: indexPath.section)
+        let sectionInset = delegate?.collectionView?(collectionView, layout: self, insetForSectionAt: indexPath.section) ?? .zero
         
-        var sectionOriginY = startingHeaderHeight + sectionInset.top
+        var sectionOriginY = stretchyBannerHeight + sectionInset.top
         if indexPath.section > 0 {
             let previousSection = indexPath.section - 1
             let lastItem = collectionView.numberOfItems(inSection: previousSection) - 1
@@ -104,10 +101,17 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
             sectionOriginY = (previousCell?.frame.maxY ?? 0) + sectionInset.bottom
         }
         
-        let itemOriginY = sectionOriginY + CGFloat(indexPath.item) * (itemSize.height + itemSpacing)
+        let itemSize = delegate?.collectionView?(collectionView, layout: self, sizeForItemAt: indexPath) ?? CGSize(width: collectionView.frame.width, height: 44)
+        
+        let itemSpacing = delegate?.collectionView?(collectionView, layout: self, minimumInteritemSpacingForSectionAt: indexPath.section) ?? CGFloat.leastNonzeroMagnitude
+        
+        var itemOriginY = sectionOriginY + CGFloat(indexPath.item) * (itemSize.height + itemSpacing)
+        if indexPath.row == 0, let sectionInset = delegate?.collectionView?(collectionView, layout: self, minimumLineSpacingForSectionAt: indexPath.section) {
+            itemOriginY += sectionInset
+        }
         
         let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attribute.frame = CGRect(x: sectionInset.left, y: itemOriginY, width: itemSize.width, height: itemSize.height)
+        attribute.frame = CGRect(x: sectionInset.left, y: itemOriginY, width: itemSize.width - sectionInset.right - sectionInset.left, height: itemSize.height - sectionInset.bottom)
         return attribute
     }
     
@@ -117,11 +121,12 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
         }
         
         let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UIStretchyBannerViewKind, with: indexPath)
-        attribute.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: startingHeaderHeight)
+        attribute.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: stretchyBannerHeight)
         return attribute
     }
     
     override open var collectionViewContentSize: CGSize {
+
         guard let collectionView = collectionView else {
             return .zero
         }
@@ -134,6 +139,7 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
         guard let lastCell = layoutAttributesForItem(at: IndexPath(item: lastItem, section: lastSection)) else {
             return .zero
         }
+        let sectionInset = delegate?.collectionView?(collectionView, layout: self, insetForSectionAt: lastSection) ?? .zero
         return CGSize(width: collectionView.frame.width, height: lastCell.frame.maxY + sectionInset.bottom)
     }
 }

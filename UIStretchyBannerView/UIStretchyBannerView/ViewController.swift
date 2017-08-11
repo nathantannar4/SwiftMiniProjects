@@ -10,16 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    
-    let padding: CGFloat = 8.0
+    
     private let cellIdentifier = "UniqueCellIdentifier"
     private let headerIdentifier = "UniqueHeaderIdentifier"
     
     lazy var collectionLayout: UICollectionViewStretchyLayout = { [unowned self] in
         let layout = UICollectionViewStretchyLayout()
         layout.delegate = self
-        layout.itemSpacing = self.padding
-        layout.itemSize = CGSize(width: self.view.bounds.width - (self.padding * 2.0), height: 64.0)
-        layout.sectionInset = UIEdgeInsets(top: self.padding, left: self.padding, bottom: 32.0, right: self.padding)
         return layout
     }()
     
@@ -36,6 +33,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         _ = [
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -45,22 +43,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         ].map { $0.isActive = true }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        collectionLayout.itemSize = CGSize(width: size.width - (padding * 2.0), height: 64.0)
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = UIColor.white
+        cell.backgroundColor = indexPath.section % 2 == 0 ? .red : .blue
         return cell
     }
     
@@ -70,11 +63,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return view
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 100)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(5, 5, 5, 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 100
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
