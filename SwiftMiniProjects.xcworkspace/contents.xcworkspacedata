@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:UIMapViewController/UIMapViewController.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UICollectionViewStretchyLayout/UICollectionViewStretchyLayout.xcodeproj">
    </FileRef>
    <FileRef
