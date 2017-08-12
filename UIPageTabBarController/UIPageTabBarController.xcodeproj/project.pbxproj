@@ -15,6 +15,7 @@
 		38C992711F3C17E700A2F1C7 /* UIPageTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9926E1F3C17E700A2F1C7 /* UIPageTabBarItem.swift */; };
 		38C992731F3C17FE00A2F1C7 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C992721F3C17FE00A2F1C7 /* Fruit.swift */; };
 		38C992751F3C187600A2F1C7 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C992741F3C187600A2F1C7 /* UIView+AutoLayout.swift */; };
+		38C992DA1F3EC12100A2F1C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C992D91F3EC12100A2F1C7 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		38C9926E1F3C17E700A2F1C7 /* UIPageTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPageTabBarItem.swift; sourceTree = "<group>"; };
 		38C992721F3C17FE00A2F1C7 /* Fruit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		38C992741F3C187600A2F1C7 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		38C992D91F3EC12100A2F1C7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				38C9925D1F3C17C700A2F1C7 /* AppDelegate.swift */,
 				38C992721F3C17FE00A2F1C7 /* Fruit.swift */,
+				38C992D91F3EC12100A2F1C7 /* ViewController.swift */,
 				38C992741F3C187600A2F1C7 /* UIView+AutoLayout.swift */,
 				38C9926C1F3C17E700A2F1C7 /* UIPageTabBar.swift */,
 				38C9926D1F3C17E700A2F1C7 /* UIPageTabBarController.swift */,
@@ -149,6 +152,7 @@
 				38C992751F3C187600A2F1C7 /* UIView+AutoLayout.swift in Sources */,
 				38C992711F3C17E700A2F1C7 /* UIPageTabBarItem.swift in Sources */,
 				38C9925E1F3C17C700A2F1C7 /* AppDelegate.swift in Sources */,
+				38C992DA1F3EC12100A2F1C7 /* ViewController.swift in Sources */,
 				38C992701F3C17E700A2F1C7 /* UIPageTabBarController.swift in Sources */,
 				38C9926F1F3C17E700A2F1C7 /* UIPageTabBar.swift in Sources */,
 			);
@@ -308,6 +312,7 @@
 				38C9926B1F3C17C700A2F1C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

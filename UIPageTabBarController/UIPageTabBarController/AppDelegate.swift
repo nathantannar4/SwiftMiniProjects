@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var vcs = [UIViewController]()
         for fruit in Fruit.all() {
-            let vc = UIViewController()
+            let vc = ViewController()
             vc.tabBarItem.image = fruit.image()?.withRenderingMode(.alwaysTemplate)
             vc.title = fruit.rawValue
             vc.view.backgroundColor = fruit.color()

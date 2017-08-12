@@ -55,13 +55,6 @@ open class UIPageTabBarController: UIViewController {
         }
     }
     
-    /// An array holding the viewControllers used by the UIPageViewController
-    public var viewControllers: [UIViewController] = [] {
-        didSet {
-            tabBar.collectionView.reloadData()
-        }
-    }
-    
     public lazy var pageViewController: UIPageViewController = { [weak self] in
         
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -81,10 +74,14 @@ open class UIPageTabBarController: UIViewController {
         tabBar.controller = self
         tabBar.backgroundColor = .white
         tabBar.tabItemPressedBlock = { (index: Int, direction: UIPageViewControllerNavigationDirection) in
-            self?.displayControllerWithIndex(index, direction: direction, animated: true)
+            self?.displayControllerWithIndex(index, direction: direction, animated: true, updateTabBar: true)
         }
         return tabBar
     }()
+    
+    open var viewControllers: [UIViewController] {
+        return _viewControllers
+    }
     
     open var currentTabLineHeight: CGFloat = 2 {
         didSet {
@@ -134,6 +131,9 @@ open class UIPageTabBarController: UIViewController {
     
     // MARK: - Private
     
+    /// An array holding the viewControllers used by the UIPageViewController
+    fileprivate var _viewControllers: [UIViewController]
+
     fileprivate var previousIndex: Int = 0
     fileprivate var kDefaultContentXOffset: CGFloat {
         return self.view.bounds.width
@@ -148,15 +148,12 @@ open class UIPageTabBarController: UIViewController {
         self.init(viewControllers: [UIViewController()])
     }
     
-    public required convenience init(viewControllers: [UIViewController]) {
-        self.init(nibName: nil, bundle: nil)
-        self.viewControllers = viewControllers
+    public required init(viewControllers: [UIViewController]) {
+        _viewControllers = viewControllers
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
-    fileprivate override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
     
     public required init?(coder: NSCoder) {
         fatalError("UIPageTabBarController does not support storyboards")
@@ -236,7 +233,34 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
 
     // MARK: - UIPageViewControllerDataSource
     
-    open func displayControllerWithIndex(_ index: Int, direction: UIPageViewControllerNavigationDirection, animated: Bool) {
+    /// Insert a new view controller. Be mindful of doing this over the main thread.
+    ///
+    /// - Parameters:
+    ///   - viewController: The UIViewController to insert
+    ///   - index: Insert Index
+    open func insertViewController(_ viewController: UIViewController, atIndex index: Int) {
+        _viewControllers.insert(viewController, at: index)
+        if index == currentIndex {
+            displayControllerWithIndex(index, direction: .reverse, animated: true, updateTabBar: false)
+        }
+        tabBar.collectionView.reloadData()
+    }
+    
+    /// Remove a view controller.  Be mindful of doing this over the main thread.
+    ///
+    /// - Parameter index: The index of the viewController array to remove.
+    open func removeViewController(atIndex index: Int) {
+        if index == currentIndex {
+            let direction: UIPageViewControllerNavigationDirection = currentIndex == 0 ? .forward : .reverse
+            let isLast = currentIndex == (viewControllers.count - 1)
+            let adjustment = isLast ? -1 : 1
+            displayControllerWithIndex(currentIndex + adjustment, direction: direction, animated: true, updateTabBar: isLast)
+        }
+        _viewControllers.remove(at: index)
+        tabBar.collectionView.reloadData()
+    }
+    
+    open func displayControllerWithIndex(_ index: Int, direction: UIPageViewControllerNavigationDirection, animated: Bool, updateTabBar: Bool) {
         
         previousIndex = index
         shouldScrollCurrentBar = false
@@ -246,10 +270,12 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
             self?.previousIndex = index
         }
         
-        self.pageViewController.setViewControllers([viewControllers[index]], direction: direction, animated: animated, completion: completion)
+        pageViewController.setViewControllers([viewControllers[index]], direction: direction, animated: animated, completion: completion)
         
         guard isViewLoaded else { return }
-        tabBar.updateCurrentIndex(index, shouldScroll: true)
+        if updateTabBar {
+            tabBar.updateCurrentIndex(index, shouldScroll: true)
+        }
     }
     
     fileprivate func nextViewController(_ viewController: UIViewController, isAfter: Bool) -> UIViewController? {

@@ -5,9 +5,6 @@
       location = "group:UICollectionViewStretchyLayout/UICollectionViewStretchyLayout.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:NTToolKit/NTToolKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:UIWebViewController/UIWebViewController.xcodeproj">
    </FileRef>
    <FileRef
@@ -15,6 +12,9 @@
    </FileRef>
    <FileRef
       location = "group:UIPageTabBarController/UIPageTabBarController.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NTToolKit/NTToolKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LICENSE">
