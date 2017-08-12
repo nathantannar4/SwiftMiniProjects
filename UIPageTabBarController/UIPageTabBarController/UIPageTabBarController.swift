@@ -233,23 +233,31 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
 
     // MARK: - UIPageViewControllerDataSource
     
-    /// Insert a new view controller. Be mindful of doing this over the main thread.
+    /// Insert a new view controller.
     ///
     /// - Parameters:
     ///   - viewController: The UIViewController to insert
-    ///   - index: Insert Index
+    ///   - index: If index >= viewControllers.count, the max insertion index will be used
     open func insertViewController(_ viewController: UIViewController, atIndex index: Int) {
-        _viewControllers.insert(viewController, at: index)
+        if index >= _viewControllers.count {
+            _viewControllers.insert(viewController, at: _viewControllers.count - 1)
+        } else {
+            _viewControllers.insert(viewController, at: index)
+        }
         if index == currentIndex {
             displayControllerWithIndex(index, direction: .reverse, animated: true, updateTabBar: false)
         }
         tabBar.collectionView.reloadData()
     }
     
-    /// Remove a view controller.  Be mindful of doing this over the main thread.
+    /// Removes a view controller.
     ///
-    /// - Parameter index: The index of the viewController array to remove.
+    /// - Parameter index: 0 < index < viewControllers.count && viewControllers.count != 1
     open func removeViewController(atIndex index: Int) {
+        if index < 0 || index >= _viewControllers.count || _viewControllers.count == 1 {
+            print("Invalid Index/ViewController array cannot be empty")
+            return
+        }
         if index == currentIndex {
             let direction: UIPageViewControllerNavigationDirection = currentIndex == 0 ? .forward : .reverse
             let isLast = currentIndex == (viewControllers.count - 1)
