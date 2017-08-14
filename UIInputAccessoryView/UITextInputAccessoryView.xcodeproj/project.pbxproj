@@ -12,6 +12,7 @@
 		38920D891F41362900C1E66C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38920D881F41362900C1E66C /* Assets.xcassets */; };
 		38920D8C1F41362A00C1E66C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */; };
 		38920D941F41363900C1E66C /* UIInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D931F41363900C1E66C /* UIInputAccessoryView.swift */; };
+		38920D981F4166C300C1E66C /* FacebookInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D971F4166C300C1E66C /* FacebookInputBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		38920D8B1F41362A00C1E66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38920D8D1F41362A00C1E66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38920D931F41363900C1E66C /* UIInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIInputAccessoryView.swift; sourceTree = "<group>"; };
+		38920D971F4166C300C1E66C /* FacebookInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInputBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				38920D841F41362900C1E66C /* AppDelegate.swift */,
 				38920D861F41362900C1E66C /* ViewController.swift */,
 				38920D931F41363900C1E66C /* UIInputAccessoryView.swift */,
+				38920D971F4166C300C1E66C /* FacebookInputBar.swift */,
 				38920D881F41362900C1E66C /* Assets.xcassets */,
 				38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */,
 				38920D8D1F41362A00C1E66C /* Info.plist */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38920D981F4166C300C1E66C /* FacebookInputBar.swift in Sources */,
 				38920D871F41362900C1E66C /* ViewController.swift in Sources */,
 				38920D941F41363900C1E66C /* UIInputAccessoryView.swift in Sources */,
 				38920D851F41362900C1E66C /* AppDelegate.swift in Sources */,

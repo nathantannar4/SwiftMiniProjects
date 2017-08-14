@@ -31,6 +31,7 @@ import UIKit
 public protocol UITextInputAccessoryViewDelegate: NSObjectProtocol {
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, contentSizeDidChangeTo Size: CGSize)
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, textDidChangeTo text: String)
+    @objc optional func textInput(_ textInput: UITextInputAccessoryView, didPressSendButtonWith text: String)
 }
 
 open class UITextInputAccessoryView: UIView {
@@ -40,7 +41,6 @@ open class UITextInputAccessoryView: UIView {
     open weak var delegate: UITextInputAccessoryViewDelegate?
     
     open let textView: InputTextView = {
-        
         let textView = InputTextView()
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -58,8 +58,7 @@ open class UITextInputAccessoryView: UIView {
         return textView
     }()
     
-    open let sendButton: UIButton = {
-        
+    open lazy var sendButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setTitle("Send", for: .normal)
         button.setTitleColor(.lightBlue, for: .normal)
@@ -69,6 +68,7 @@ open class UITextInputAccessoryView: UIView {
         button.isEnabled = false
         button.contentHorizontalAlignment = .center
         button.contentVerticalAlignment = .center
+        button.addTarget(self, action: #selector(didPressSendButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -85,7 +85,10 @@ open class UITextInputAccessoryView: UIView {
         }
     }
     
-    private let padding: CGFloat = 8
+    open var padding: CGFloat {
+        return 8
+    }
+    
     private var previousContentSize: CGSize = .zero
     private var nonTranslucentBackgroundColor: UIColor? = .white
     
@@ -120,11 +123,11 @@ open class UITextInputAccessoryView: UIView {
     
     // MARK: - Methods
     
-    func orientationDidChange(_ notification: Notification) {
+    open func orientationDidChange(_ notification: Notification) {
         invalidateIntrinsicContentSize()
     }
     
-    public func textViewDidChange(_ notification: Notification) {
+    open  func textViewDidChange(_ notification: Notification) {
         let trimmedText = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         sendButton.isEnabled = !trimmedText.isEmpty
         delegate?.textInput?(self, textDidChangeTo: trimmedText)
@@ -136,11 +139,11 @@ open class UITextInputAccessoryView: UIView {
         var heightToFit = sizeToFit.height.rounded() + padding
         if heightToFit >= maxHeight {
             textView.isScrollEnabled = true
-            layer.cornerRadius = 10
+//            layer.cornerRadius = 10
             heightToFit = maxHeight
         } else {
             textView.isScrollEnabled = false
-            layer.cornerRadius = 0
+//            layer.cornerRadius = 0
         }
         let size = CGSize(width: bounds.width, height: heightToFit)
         if previousContentSize != size {
@@ -150,13 +153,17 @@ open class UITextInputAccessoryView: UIView {
         return size
     }
     
-    private func setupSubviews() {
+    open func didPressSendButton(_ sender: AnyObject?) {
+        delegate?.textInput?(self, didPressSendButtonWith: textView.text)
+    }
+    
+    open func setupSubviews() {
         
         addSubview(textView)
         addSubview(sendButton)
     }
     
-    private func setupConstraints() {
+    open func setupConstraints() {
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         sendButton.translatesAutoresizingMaskIntoConstraints = false
@@ -168,7 +175,7 @@ open class UITextInputAccessoryView: UIView {
             sendButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             sendButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding / 2),
             sendButton.widthAnchor.constraint(equalToConstant: 60),
-            sendButton.heightAnchor.constraint(equalToConstant: 45)
+            sendButton.heightAnchor.constraint(equalToConstant: 44)
         ].map { $0.isActive = true }
     }
 }
