@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/nathantannar/Documents/Active iOS Projects/SwiftMiniProjects/UIInputAccessoryView/UITextInputAccessoryView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UIMapViewController/UIMapViewController.xcodeproj">
    </FileRef>
    <FileRef

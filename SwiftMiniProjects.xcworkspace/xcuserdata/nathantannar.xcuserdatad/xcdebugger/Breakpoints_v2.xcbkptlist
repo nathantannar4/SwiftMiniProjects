@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIWebViewController/UIWebViewController/UIWebViewController.swift"
-            timestampString = "524128346.248358"
+            timestampString = "524299572.491985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "handleShare(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "pageViewController(_:willTransitionTo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "nextViewController(_:isAfter:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "nextViewController(_:isAfter:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "displayControllerWithIndex(_:direction:animated:updateTabBar:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "pageViewController(_:viewControllerAfter:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "pageViewController(_:viewControllerBefore:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,12 +234,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageTabBarController/UIPageTabBarController/UIPageTabBarController.swift"
-            timestampString = "524259601.917712"
+            timestampString = "524298950.500599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "pageViewController(_:didFinishAnimating:previousViewControllers:transitionCompleted:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIInputAccessoryView/UIInputAccessoryView/UIInputAccessoryView.swift"
+            timestampString = "524376677.085499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "intrinsicContentSize"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIInputAccessoryView/UIInputAccessoryView/UIInputAccessoryView.swift"
+            timestampString = "524376677.085499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "orientationDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

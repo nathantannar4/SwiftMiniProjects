@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    let urls = ["https://google.ca", "https://apple.ca"]
+    let urls = ["https://www.google.ca", "www.apple.ca", "youtube.ca", "swift open-source"]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -27,8 +27,10 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = URL(string: urls[indexPath.row])!
-        let vc = UIWebViewController(url: url)
+        let vc = UIWebViewController()
+        let urlString = vc.makeValidURL(with: urls[indexPath.row])
+        vc.url = URL(string: urlString)
+        vc.loadRequest(forURL: vc.url)
         vc.isUITranslucent = true
         navigationController?.pushViewController(vc, animated: true)
     }

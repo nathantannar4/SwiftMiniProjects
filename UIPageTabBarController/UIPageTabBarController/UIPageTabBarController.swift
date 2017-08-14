@@ -233,7 +233,7 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
 
     // MARK: - UIPageViewControllerDataSource
     
-    /// Insert a new view controller.
+    /// Insert a new view controller. Use with caution.
     ///
     /// - Parameters:
     ///   - viewController: The UIViewController to insert
@@ -250,7 +250,7 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
         tabBar.collectionView.reloadData()
     }
     
-    /// Removes a view controller.
+    /// Removes a view controller. Use with caution.
     ///
     /// - Parameter index: 0 < index < viewControllers.count && viewControllers.count != 1
     open func removeViewController(atIndex index: Int) {

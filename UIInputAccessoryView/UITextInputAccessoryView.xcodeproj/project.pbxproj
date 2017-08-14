@@ -7,26 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38C992181F3C0D3A00A2F1C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C992171F3C0D3A00A2F1C7 /* AppDelegate.swift */; };
-		38C9921C1F3C0D3A00A2F1C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C9921B1F3C0D3A00A2F1C7 /* Assets.xcassets */; };
-		38C9921F1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C9921D1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard */; };
-		38C9924F1F3C0F0E00A2F1C7 /* UIDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9924D1F3C0F0E00A2F1C7 /* UIDrawerController.swift */; };
-		38C992501F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9924E1F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift */; };
+		38920D851F41362900C1E66C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D841F41362900C1E66C /* AppDelegate.swift */; };
+		38920D871F41362900C1E66C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D861F41362900C1E66C /* ViewController.swift */; };
+		38920D891F41362900C1E66C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38920D881F41362900C1E66C /* Assets.xcassets */; };
+		38920D8C1F41362A00C1E66C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */; };
+		38920D941F41363900C1E66C /* UIInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D931F41363900C1E66C /* UIInputAccessoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		38C992141F3C0D3A00A2F1C7 /* UIDrawerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDrawerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		38C992171F3C0D3A00A2F1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38C9921B1F3C0D3A00A2F1C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		38C9921E1F3C0D3A00A2F1C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		38C992201F3C0D3A00A2F1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38C9924D1F3C0F0E00A2F1C7 /* UIDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawerController.swift; sourceTree = "<group>"; };
-		38C9924E1F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawerMenuItem.swift; sourceTree = "<group>"; };
-		38C992861F3C1F0500A2F1C7 /* NTToolKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTToolKit.framework; path = "../NTToolKit/build/Debug-iphoneos/NTToolKit.framework"; sourceTree = "<group>"; };
+		38920D811F41362900C1E66C /* UITextInputAccessoryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITextInputAccessoryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38920D841F41362900C1E66C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		38920D861F41362900C1E66C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38920D881F41362900C1E66C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		38920D8B1F41362A00C1E66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		38920D8D1F41362A00C1E66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38920D931F41363900C1E66C /* UIInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIInputAccessoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		38C992111F3C0D3A00A2F1C7 /* Frameworks */ = {
+		38920D7E1F41362900C1E66C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,82 +35,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38C9920B1F3C0D3A00A2F1C7 = {
+		38920D781F41362900C1E66C = {
 			isa = PBXGroup;
 			children = (
-				38C992161F3C0D3A00A2F1C7 /* UIDrawerController */,
-				38C992151F3C0D3A00A2F1C7 /* Products */,
-				38C992851F3C1F0500A2F1C7 /* Frameworks */,
+				38920D831F41362900C1E66C /* UIInputAccessoryView */,
+				38920D821F41362900C1E66C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		38C992151F3C0D3A00A2F1C7 /* Products */ = {
+		38920D821F41362900C1E66C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				38C992141F3C0D3A00A2F1C7 /* UIDrawerController.app */,
+				38920D811F41362900C1E66C /* UITextInputAccessoryView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		38C992161F3C0D3A00A2F1C7 /* UIDrawerController */ = {
+		38920D831F41362900C1E66C /* UIInputAccessoryView */ = {
 			isa = PBXGroup;
 			children = (
-				38C992171F3C0D3A00A2F1C7 /* AppDelegate.swift */,
-				38C9924D1F3C0F0E00A2F1C7 /* UIDrawerController.swift */,
-				38C9924E1F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift */,
-				38C9921B1F3C0D3A00A2F1C7 /* Assets.xcassets */,
-				38C9921D1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard */,
-				38C992201F3C0D3A00A2F1C7 /* Info.plist */,
+				38920D841F41362900C1E66C /* AppDelegate.swift */,
+				38920D861F41362900C1E66C /* ViewController.swift */,
+				38920D931F41363900C1E66C /* UIInputAccessoryView.swift */,
+				38920D881F41362900C1E66C /* Assets.xcassets */,
+				38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */,
+				38920D8D1F41362A00C1E66C /* Info.plist */,
 			);
-			path = UIDrawerController;
-			sourceTree = "<group>";
-		};
-		38C992851F3C1F0500A2F1C7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				38C992861F3C1F0500A2F1C7 /* NTToolKit.framework */,
-			);
-			name = Frameworks;
+			path = UIInputAccessoryView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		38C992131F3C0D3A00A2F1C7 /* UIDrawerController */ = {
+		38920D801F41362900C1E66C /* UITextInputAccessoryView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38C992231F3C0D3A00A2F1C7 /* Build configuration list for PBXNativeTarget "UIDrawerController" */;
+			buildConfigurationList = 38920D901F41362A00C1E66C /* Build configuration list for PBXNativeTarget "UITextInputAccessoryView" */;
 			buildPhases = (
-				38C992101F3C0D3A00A2F1C7 /* Sources */,
-				38C992111F3C0D3A00A2F1C7 /* Frameworks */,
-				38C992121F3C0D3A00A2F1C7 /* Resources */,
+				38920D7D1F41362900C1E66C /* Sources */,
+				38920D7E1F41362900C1E66C /* Frameworks */,
+				38920D7F1F41362900C1E66C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UIDrawerController;
-			productName = UIDrawerController;
-			productReference = 38C992141F3C0D3A00A2F1C7 /* UIDrawerController.app */;
+			name = UITextInputAccessoryView;
+			productName = UIInputAccessoryView;
+			productReference = 38920D811F41362900C1E66C /* UITextInputAccessoryView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		38C9920C1F3C0D3A00A2F1C7 /* Project object */ = {
+		38920D791F41362900C1E66C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Nathan Tannar";
 				TargetAttributes = {
-					38C992131F3C0D3A00A2F1C7 = {
+					38920D801F41362900C1E66C = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9EUCWD26TP;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 38C9920F1F3C0D3A00A2F1C7 /* Build configuration list for PBXProject "UIDrawerController" */;
+			buildConfigurationList = 38920D7C1F41362900C1E66C /* Build configuration list for PBXProject "UITextInputAccessoryView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -119,46 +109,46 @@
 				en,
 				Base,
 			);
-			mainGroup = 38C9920B1F3C0D3A00A2F1C7;
-			productRefGroup = 38C992151F3C0D3A00A2F1C7 /* Products */;
+			mainGroup = 38920D781F41362900C1E66C;
+			productRefGroup = 38920D821F41362900C1E66C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				38C992131F3C0D3A00A2F1C7 /* UIDrawerController */,
+				38920D801F41362900C1E66C /* UITextInputAccessoryView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		38C992121F3C0D3A00A2F1C7 /* Resources */ = {
+		38920D7F1F41362900C1E66C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38C9921C1F3C0D3A00A2F1C7 /* Assets.xcassets in Resources */,
-				38C9921F1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard in Resources */,
+				38920D891F41362900C1E66C /* Assets.xcassets in Resources */,
+				38920D8C1F41362A00C1E66C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		38C992101F3C0D3A00A2F1C7 /* Sources */ = {
+		38920D7D1F41362900C1E66C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38C992501F3C0F0E00A2F1C7 /* UIDrawerMenuItem.swift in Sources */,
-				38C992181F3C0D3A00A2F1C7 /* AppDelegate.swift in Sources */,
-				38C9924F1F3C0F0E00A2F1C7 /* UIDrawerController.swift in Sources */,
+				38920D871F41362900C1E66C /* ViewController.swift in Sources */,
+				38920D941F41363900C1E66C /* UIInputAccessoryView.swift in Sources */,
+				38920D851F41362900C1E66C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		38C9921D1F3C0D3A00A2F1C7 /* LaunchScreen.storyboard */ = {
+		38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				38C9921E1F3C0D3A00A2F1C7 /* Base */,
+				38920D8B1F41362A00C1E66C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +156,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		38C992211F3C0D3A00A2F1C7 /* Debug */ = {
+		38920D8E1F41362A00C1E66C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -217,7 +207,7 @@
 			};
 			name = Debug;
 		};
-		38C992221F3C0D3A00A2F1C7 /* Release */ = {
+		38920D8F1F41362A00C1E66C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -261,27 +251,27 @@
 			};
 			name = Release;
 		};
-		38C992241F3C0D3A00A2F1C7 /* Debug */ = {
+		38920D911F41362A00C1E66C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
-				INFOPLIST_FILE = UIDrawerController/Info.plist;
+				INFOPLIST_FILE = UIInputAccessoryView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UIDrawerController;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITextInputAccessoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		38C992251F3C0D3A00A2F1C7 /* Release */ = {
+		38920D921F41362A00C1E66C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
-				INFOPLIST_FILE = UIDrawerController/Info.plist;
+				INFOPLIST_FILE = UIInputAccessoryView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UIDrawerController;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITextInputAccessoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -290,25 +280,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38C9920F1F3C0D3A00A2F1C7 /* Build configuration list for PBXProject "UIDrawerController" */ = {
+		38920D7C1F41362900C1E66C /* Build configuration list for PBXProject "UITextInputAccessoryView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				38C992211F3C0D3A00A2F1C7 /* Debug */,
-				38C992221F3C0D3A00A2F1C7 /* Release */,
+				38920D8E1F41362A00C1E66C /* Debug */,
+				38920D8F1F41362A00C1E66C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38C992231F3C0D3A00A2F1C7 /* Build configuration list for PBXNativeTarget "UIDrawerController" */ = {
+		38920D901F41362A00C1E66C /* Build configuration list for PBXNativeTarget "UITextInputAccessoryView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				38C992241F3C0D3A00A2F1C7 /* Debug */,
-				38C992251F3C0D3A00A2F1C7 /* Release */,
+				38920D911F41362A00C1E66C /* Debug */,
+				38920D921F41362A00C1E66C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 38C9920C1F3C0D3A00A2F1C7 /* Project object */;
+	rootObject = 38920D791F41362900C1E66C /* Project object */;
 }

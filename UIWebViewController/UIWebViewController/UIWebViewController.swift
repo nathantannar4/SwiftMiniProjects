@@ -36,6 +36,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         webView.allowsLinkPreview = true
         return webView
     }()
+    
     open var url: URL?
     
     open var urlBar: UISearchBar! = {
@@ -96,6 +97,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         view.addSubview(webView)
         
         navigationController?.navigationItem.leftBarButtonItem?.title = String()
+        navigationController?.navigationItem.rightBarButtonItem = navigationItem(#imageLiteral(resourceName: "icon_share"), action: #selector(UIWebViewController.handleShare(_:)))
         navigationItem.titleView = urlBar
         urlBar.delegate = self
         urlBar.sizeToFit()
@@ -160,6 +162,23 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    open func makeValidURL(with text: String) -> String {
+        if !text.contains("https://") {
+            if text.contains("http://") {
+                // Force HTTPS
+                return text.replacingOccurrences(of: "http://", with: "https://")
+            } else {
+                if text.contains(" ") || !text.contains(".") {
+                    // Make Google search
+                    return "https://www.google.com/search?q=" + text.replacingOccurrences(of: " ", with: "+")
+                } else {
+                    return "https://" + text
+                }
+            }
+        }
+        return text
     }
     
     // MARK: - View Lifecycle
@@ -301,19 +320,8 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
             print("Failed to load with error: Invalid URL")
             return
         }
-        if !text.contains("https://") {
-            if text.contains("http://") {
-                // Force HTTPS
-                text = text.replacingOccurrences(of: "http://", with: "https://")
-            } else {
-                if text.contains(" ") || !text.contains(".") {
-                    // Make Google search
-                    text = "https://www.google.com/search?q=" + text.replacingOccurrences(of: " ", with: "+")
-                } else {
-                    text = "https://" + text
-                }
-            }
-        }
+        
+        text = makeValidURL(with: text)
         
         if url?.absoluteString != text {
             url = URL(string: text)
