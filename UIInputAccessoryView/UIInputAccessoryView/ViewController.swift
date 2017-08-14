@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITextInputAccessoryViewDelegate {
         
         view.backgroundColor = .red
         inputBar.delegate = self
+        inputBar.isTranslucent = true
+        inputBar.isTranslucent = false
     }
 
     func textInput(_ textInput: UITextInputAccessoryView, contentSizeDidChangeTo size: CGSize) {

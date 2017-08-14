@@ -111,7 +111,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         ]
         view.addSubview(toolbar)
         
-        let inputView = InputAccessoryView()
+        let inputView = EasyInputAccessoryView()
         inputView.controller = self
         inputView.addSubview(toolbar)
         

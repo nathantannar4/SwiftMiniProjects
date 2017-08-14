@@ -33,7 +33,7 @@ public protocol UITextInputAccessoryViewDelegate: NSObjectProtocol {
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, textDidChangeTo text: String)
 }
 
-open class UITextInputAccessoryView: UIView, UITextViewDelegate {
+open class UITextInputAccessoryView: UIView {
     
     // MARK: - Properties
     
@@ -74,8 +74,20 @@ open class UITextInputAccessoryView: UIView, UITextViewDelegate {
     
     open var maxHeight: CGFloat = 300
     
+    open var isTranslucent: Bool = false {
+        didSet {
+            if isTranslucent {
+                nonTranslucentBackgroundColor = backgroundColor
+                backgroundColor = backgroundColor?.withAlphaComponent(0.9)
+            } else {
+                backgroundColor = nonTranslucentBackgroundColor
+            }
+        }
+    }
+    
     fileprivate let padding: CGFloat = 8
     fileprivate var previousContentSize: CGSize = .zero
+    fileprivate var nonTranslucentBackgroundColor: UIColor? = .white
     
     // MARK: - Initializers
     
@@ -86,10 +98,12 @@ open class UITextInputAccessoryView: UIView, UITextViewDelegate {
         setupConstraints()
         
         backgroundColor = .white
-        textView.delegate = self
         autoresizingMask = .flexibleHeight
         
         NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(notification:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(notification:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     
     convenience public init() {
@@ -110,7 +124,7 @@ open class UITextInputAccessoryView: UIView, UITextViewDelegate {
         invalidateIntrinsicContentSize()
     }
     
-    public func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ notification: Notification) {
         let trimmedText = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         sendButton.isEnabled = !trimmedText.isEmpty
         delegate?.textInput?(self, textDidChangeTo: trimmedText)
@@ -122,11 +136,15 @@ open class UITextInputAccessoryView: UIView, UITextViewDelegate {
         var heightToFit = sizeToFit.height.rounded() + padding
         if heightToFit >= maxHeight {
             textView.isScrollEnabled = true
-            layer.cornerRadius = 10
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.layer.cornerRadius = 10
+            })
             heightToFit = maxHeight
         } else {
             textView.isScrollEnabled = false
-            layer.cornerRadius = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.layer.cornerRadius = 0
+            })
         }
         let size = CGSize(width: bounds.width, height: heightToFit)
         if previousContentSize != size {

@@ -27,7 +27,7 @@
 
 import UIKit
 
-open class InputAccessoryView: UIView {
+open class EasyInputAccessoryView: UIView {
     
     open var heightConstant: CGFloat = 44 {
         didSet {
