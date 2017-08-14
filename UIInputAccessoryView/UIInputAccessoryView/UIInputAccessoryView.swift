@@ -85,9 +85,9 @@ open class UITextInputAccessoryView: UIView {
         }
     }
     
-    fileprivate let padding: CGFloat = 8
-    fileprivate var previousContentSize: CGSize = .zero
-    fileprivate var nonTranslucentBackgroundColor: UIColor? = .white
+    private let padding: CGFloat = 8
+    private var previousContentSize: CGSize = .zero
+    private var nonTranslucentBackgroundColor: UIColor? = .white
     
     // MARK: - Initializers
     
@@ -136,15 +136,11 @@ open class UITextInputAccessoryView: UIView {
         var heightToFit = sizeToFit.height.rounded() + padding
         if heightToFit >= maxHeight {
             textView.isScrollEnabled = true
-            UIView.animate(withDuration: 0.3, animations: { 
-                self.layer.cornerRadius = 10
-            })
+            layer.cornerRadius = 10
             heightToFit = maxHeight
         } else {
             textView.isScrollEnabled = false
-            UIView.animate(withDuration: 0.3, animations: {
-                self.layer.cornerRadius = 0
-            })
+            layer.cornerRadius = 0
         }
         let size = CGSize(width: bounds.width, height: heightToFit)
         if previousContentSize != size {
@@ -248,7 +244,7 @@ open class InputTextView: UITextView {
         
     }
     
-    fileprivate func addObservers() {
+    private func addObservers() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(textDidChange),
                                                name: Notification.Name.UITextViewTextDidChange,

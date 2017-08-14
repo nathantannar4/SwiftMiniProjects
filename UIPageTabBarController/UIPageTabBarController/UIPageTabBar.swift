@@ -88,32 +88,32 @@ open class UIPageTabBar: UIView {
     internal var tabItemPressedBlock: ((_ index: Int, _ direction: UIPageViewControllerNavigationDirection) -> Void)?
     internal var currentBarView = UIView()
     
-    fileprivate var _currentIndex: Int = 0
-    fileprivate var numberOfTabs: Int {
+    private var _currentIndex: Int = 0
+    private var numberOfTabs: Int {
         get {
             return controller?.viewControllers.count ?? 0
         }
     }
-    fileprivate var shouldScrollToItem: Bool = false
-    fileprivate var pageTabItemsWidth: CGFloat {
+    private var shouldScrollToItem: Bool = false
+    private var pageTabItemsWidth: CGFloat {
         get {
             return controller?.tabBarItemWidth ?? 0.0
         }
     }
-    fileprivate var collectionViewContentOffsetX: CGFloat = 0.0
-    fileprivate var currentBarViewWidth: CGFloat = 0.0
-    fileprivate var currentBarViewLeftConstraint: NSLayoutConstraint?
+    private var collectionViewContentOffsetX: CGFloat = 0.0
+    private var currentBarViewWidth: CGFloat = 0.0
+    private var currentBarViewLeftConstraint: NSLayoutConstraint?
 
-    fileprivate var tabBarPosition: UIPageTabBarPosition = .top
-    fileprivate var previousIndex: Int = 0
+    private var tabBarPosition: UIPageTabBarPosition = .top
+    private var previousIndex: Int = 0
     
     
-    fileprivate var currentBarViewWidthConstraint: NSLayoutConstraint? {
+    private var currentBarViewWidthConstraint: NSLayoutConstraint? {
         get {
             return currentBarView.constraint(withIdentifier: "width")
         }
     }
-    fileprivate var currentBarViewHeightConstraint: NSLayoutConstraint? {
+    private var currentBarViewHeightConstraint: NSLayoutConstraint? {
         get {
             return currentBarView.constraint(withIdentifier: "height")
         }
@@ -215,7 +215,7 @@ open class UIPageTabBar: UIView {
      
      - parameter index: Next IndexPath
      */
-    fileprivate func updateCurrentIndexForTap(_ index: Int) {
+    private func updateCurrentIndexForTap(_ index: Int) {
         deselectVisibleCells()
         
         _currentIndex = index
@@ -269,7 +269,7 @@ open class UIPageTabBar: UIView {
     /**
      Update all of the cells in the display to the unselected state
      */
-    fileprivate func deselectVisibleCells() {
+    private func deselectVisibleCells() {
         collectionView.visibleCells.flatMap { $0 as? UIPageTabBarItem }.forEach { $0.isCurrent = false }
     }
 }

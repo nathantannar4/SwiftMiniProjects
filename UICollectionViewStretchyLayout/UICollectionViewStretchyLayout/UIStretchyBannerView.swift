@@ -57,7 +57,7 @@ open class UIStretchyBannerView: UICollectionReusableView {
         setup()
     }
     
-    fileprivate func setup() {
+    private func setup() {
         clipsToBounds = true
         addSubview(imageView)
         _ = [

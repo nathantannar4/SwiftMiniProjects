@@ -68,7 +68,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         }
     }
     
-    fileprivate var previousScrollViewYOffset: CGFloat = 0
+    private var previousScrollViewYOffset: CGFloat = 0
     
     // MARK: - Initialization
     
@@ -91,7 +91,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         super.init(coder: aDecoder)
     }
     
-    fileprivate func setup() {
+    private func setup() {
         webView.delegate = self
         webView.scrollView.delegate = self
         view.addSubview(webView)
@@ -132,7 +132,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
     
     // MARK: - Helper Methods
     
-    fileprivate func navigationItem(_ icon: UIImage, action: Selector) -> UIBarButtonItem {
+    private func navigationItem(_ icon: UIImage, action: Selector) -> UIBarButtonItem {
         let image = icon.withRenderingMode(.alwaysTemplate)
         return UIBarButtonItem(image: image, style: .plain, target: self, action: action)
     }
@@ -252,7 +252,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         stoppedScrolling()
     }
     
-    fileprivate func stoppedScrolling() {
+    private func stoppedScrolling() {
         guard let frame = navigationController?.navigationBar.frame else {
             return
         }
@@ -272,7 +272,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         navigationController?.navigationBar.tintColor = navigationController?.navigationBar.tintColor?.withAlphaComponent(alpha)
     }
     
-    fileprivate func animateNavBar(to y: CGFloat) {
+    private func animateNavBar(to y: CGFloat) {
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
             guard var frame = self.navigationController?.navigationBar.frame else {
                 return
@@ -284,7 +284,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         })
     }
     
-    fileprivate func updateWebViewFrameYOrigin(_ y: CGFloat) {
+    private func updateWebViewFrameYOrigin(_ y: CGFloat) {
         webView.frame.origin.y = isUITranslucent ? 0 : y
     }
 

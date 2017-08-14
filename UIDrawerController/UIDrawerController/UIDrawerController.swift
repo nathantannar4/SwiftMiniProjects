@@ -100,12 +100,12 @@ public extension UIViewController {
 open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - View Controllers
-    fileprivate var _centerViewController: UIViewController?
-    fileprivate var _leftViewController:   UIViewController?
-    fileprivate var _rightViewController:  UIViewController?
+    private var _centerViewController: UIViewController?
+    private var _leftViewController:   UIViewController?
+    private var _rightViewController:  UIViewController?
     
     // MARK: - State
-    fileprivate var _currentState: UIDrawerControllerState = .collapsed
+    private var _currentState: UIDrawerControllerState = .collapsed
     
     // MARK: - Drawer View Properties
     open var leftViewProperties  = UIDrawerSideProperties(side: .left) {
@@ -191,7 +191,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     /// Adds a view controllers view and parent pointer to 'UIDrawerController'
     ///
     /// - Parameter viewController: The view controller to remove
-    fileprivate func addViewController(_ viewController: UIViewController?, toSide side: UIDrawerSide) {
+    private func addViewController(_ viewController: UIViewController?, toSide side: UIDrawerSide) {
         guard let vc = viewController else {
             return
         }
@@ -244,7 +244,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     /// Removes a view controllers view and parent pointer from 'UIDrawerController'
     ///
     /// - Parameter viewController: The view controller to remove
-    fileprivate func removeViewController(_ viewController: UIViewController?) {
+    private func removeViewController(_ viewController: UIViewController?) {
         guard let vc = viewController else {
             return
         }
@@ -378,7 +378,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     /// - Parameters:
     ///   - side: The side to open
     ///   - completion: Called when the animation is complete
-    fileprivate func open(drawerSide side: UIDrawerSide, completion: (() -> Void)? = nil) {
+    private func open(drawerSide side: UIDrawerSide, completion: (() -> Void)? = nil) {
         
         guard let properties = properties(forSide: side) else {
             return
@@ -418,7 +418,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     /// - Parameters:
     ///   - side: The side to close
     ///   - completion: Called when the animation is complete
-    fileprivate func close(drawerSide side: UIDrawerSide, completion: (() -> Void)? = nil) {
+    private func close(drawerSide side: UIDrawerSide, completion: (() -> Void)? = nil) {
         
         guard let properties = properties(forSide: side) else {
             return
@@ -457,7 +457,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
     /// Brinds a side drawer back to its original openned state
     ///
     /// - Parameter side: The side to bounce back
-    fileprivate func bounceBack(drawerSide side: UIDrawerSide) {
+    private func bounceBack(drawerSide side: UIDrawerSide) {
         
         guard let properties = properties(forSide: side) else {
             return
@@ -622,7 +622,7 @@ open class UIDrawerController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    fileprivate func applyShadow(toViewController viewController: UIViewController?, withProperties props: UIDrawerSideProperties) {
+    private func applyShadow(toViewController viewController: UIViewController?, withProperties props: UIDrawerSideProperties) {
         viewController?.view.layer.shadowColor = props.shadowColor
         viewController?.view.layer.shadowRadius = props.shadowRadius
         viewController?.view.layer.shadowOpacity = props.shadowOpacity

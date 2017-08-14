@@ -35,7 +35,7 @@ open class UICollectionViewStretchyLayout: UICollectionViewLayout {
     
     open var stretchyBannerHeight: CGFloat = 200
     
-    fileprivate var attributes: [UICollectionViewLayoutAttributes] = []
+    private var attributes: [UICollectionViewLayoutAttributes] = []
     
     override open func prepare() {
         super.prepare()

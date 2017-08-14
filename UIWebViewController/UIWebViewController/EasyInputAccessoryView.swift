@@ -1,5 +1,5 @@
 //
-//  NTInputAccessoryView.swift
+//  EasyInputAccessoryView.swift
 //  UIWebViewController
 //
 //  Copyright © 2017 Nathan Tannar.
@@ -61,7 +61,7 @@ open class EasyInputAccessoryView: UIView {
     
     open var layoutConstraints: [NSLayoutConstraint]?
     
-    fileprivate var keyboardIsHidden: Bool = true
+    private var keyboardIsHidden: Bool = true
     
     // MARK: - Initialization
     

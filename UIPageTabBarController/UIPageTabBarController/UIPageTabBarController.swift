@@ -132,14 +132,14 @@ open class UIPageTabBarController: UIViewController {
     // MARK: - Private
     
     /// An array holding the viewControllers used by the UIPageViewController
-    fileprivate var _viewControllers: [UIViewController]
+    private var _viewControllers: [UIViewController]
 
-    fileprivate var previousIndex: Int = 0
-    fileprivate var kDefaultContentXOffset: CGFloat {
+    private var previousIndex: Int = 0
+    private var kDefaultContentXOffset: CGFloat {
         return self.view.bounds.width
     }
-    fileprivate var shouldScrollCurrentBar: Bool = true
-    fileprivate var isLayedOut: Bool = false
+    private var shouldScrollCurrentBar: Bool = true
+    private var isLayedOut: Bool = false
     
     
     // MARK: - Initialization
@@ -286,7 +286,7 @@ extension UIPageTabBarController: UIPageViewControllerDataSource {
         }
     }
     
-    fileprivate func nextViewController(_ viewController: UIViewController, isAfter: Bool) -> UIViewController? {
+    private func nextViewController(_ viewController: UIViewController, isAfter: Bool) -> UIViewController? {
         
         guard var index = viewControllers.index(of: viewController) else { return nil }
         if isAfter {

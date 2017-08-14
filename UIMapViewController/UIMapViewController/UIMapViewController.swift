@@ -65,7 +65,7 @@ open class UIMapViewController: UIViewController {
     }
     
     /// Called during initialization
-    fileprivate func setup() {
+    private func setup() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
