@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38920D851F41362900C1E66C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D841F41362900C1E66C /* AppDelegate.swift */; };
-		38920D871F41362900C1E66C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D861F41362900C1E66C /* ViewController.swift */; };
-		38920D891F41362900C1E66C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38920D881F41362900C1E66C /* Assets.xcassets */; };
-		38920D8C1F41362A00C1E66C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */; };
-		38920D941F41363900C1E66C /* UITextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920D931F41363900C1E66C /* UITextInputAccessoryView.swift */; };
+		38920DA61F440D9E00C1E66C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DA51F440D9E00C1E66C /* AppDelegate.swift */; };
+		38920DA81F440D9E00C1E66C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DA71F440D9E00C1E66C /* ViewController.swift */; };
+		38920DAA1F440D9E00C1E66C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38920DA91F440D9E00C1E66C /* Assets.xcassets */; };
+		38920DAD1F440D9E00C1E66C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38920DAB1F440D9E00C1E66C /* LaunchScreen.storyboard */; };
+		38920DBB1F440DDD00C1E66C /* UITagInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DBA1F440DDD00C1E66C /* UITagInputView.swift */; };
+		38920DBD1F44128E00C1E66C /* UITextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DBC1F44128E00C1E66C /* UITextInputAccessoryView.swift */; };
+		38920DBF1F44DE6500C1E66C /* UITagDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DBE1F44DE6500C1E66C /* UITagDeleteButton.swift */; };
+		38920DC11F44DE8700C1E66C /* UITagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38920DC01F44DE8700C1E66C /* UITagButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		38920D811F41362900C1E66C /* UITextInputAccessoryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITextInputAccessoryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		38920D841F41362900C1E66C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38920D861F41362900C1E66C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		38920D881F41362900C1E66C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		38920D8B1F41362A00C1E66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		38920D8D1F41362A00C1E66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38920D931F41363900C1E66C /* UITextInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputAccessoryView.swift; sourceTree = "<group>"; };
+		38920DA21F440D9E00C1E66C /* UITagInputView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITagInputView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38920DA51F440D9E00C1E66C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		38920DA71F440D9E00C1E66C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38920DA91F440D9E00C1E66C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		38920DAC1F440D9E00C1E66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		38920DAE1F440D9E00C1E66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38920DBA1F440DDD00C1E66C /* UITagInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITagInputView.swift; sourceTree = "<group>"; };
+		38920DBC1F44128E00C1E66C /* UITextInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputAccessoryView.swift; sourceTree = "<group>"; };
+		38920DBE1F44DE6500C1E66C /* UITagDeleteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITagDeleteButton.swift; sourceTree = "<group>"; };
+		38920DC01F44DE8700C1E66C /* UITagButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITagButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		38920D7E1F41362900C1E66C /* Frameworks */ = {
+		38920D9F1F440D9E00C1E66C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,73 +41,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38920D781F41362900C1E66C = {
+		38920D991F440D9E00C1E66C = {
 			isa = PBXGroup;
 			children = (
-				38920D831F41362900C1E66C /* UIInputAccessoryView */,
-				38920D821F41362900C1E66C /* Products */,
+				38920DA41F440D9E00C1E66C /* UITagInputView */,
+				38920DA31F440D9E00C1E66C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		38920D821F41362900C1E66C /* Products */ = {
+		38920DA31F440D9E00C1E66C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				38920D811F41362900C1E66C /* UITextInputAccessoryView.app */,
+				38920DA21F440D9E00C1E66C /* UITagInputView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		38920D831F41362900C1E66C /* UIInputAccessoryView */ = {
+		38920DA41F440D9E00C1E66C /* UITagInputView */ = {
 			isa = PBXGroup;
 			children = (
-				38920D841F41362900C1E66C /* AppDelegate.swift */,
-				38920D861F41362900C1E66C /* ViewController.swift */,
-				38920D931F41363900C1E66C /* UITextInputAccessoryView.swift */,
-				38920D881F41362900C1E66C /* Assets.xcassets */,
-				38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */,
-				38920D8D1F41362A00C1E66C /* Info.plist */,
+				38920DA51F440D9E00C1E66C /* AppDelegate.swift */,
+				38920DA71F440D9E00C1E66C /* ViewController.swift */,
+				38920DBA1F440DDD00C1E66C /* UITagInputView.swift */,
+				38920DC01F44DE8700C1E66C /* UITagButton.swift */,
+				38920DBE1F44DE6500C1E66C /* UITagDeleteButton.swift */,
+				38920DBC1F44128E00C1E66C /* UITextInputAccessoryView.swift */,
+				38920DA91F440D9E00C1E66C /* Assets.xcassets */,
+				38920DAB1F440D9E00C1E66C /* LaunchScreen.storyboard */,
+				38920DAE1F440D9E00C1E66C /* Info.plist */,
 			);
-			path = UIInputAccessoryView;
+			path = UITagInputView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		38920D801F41362900C1E66C /* UITextInputAccessoryView */ = {
+		38920DA11F440D9E00C1E66C /* UITagInputView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38920D901F41362A00C1E66C /* Build configuration list for PBXNativeTarget "UITextInputAccessoryView" */;
+			buildConfigurationList = 38920DB11F440D9E00C1E66C /* Build configuration list for PBXNativeTarget "UITagInputView" */;
 			buildPhases = (
-				38920D7D1F41362900C1E66C /* Sources */,
-				38920D7E1F41362900C1E66C /* Frameworks */,
-				38920D7F1F41362900C1E66C /* Resources */,
+				38920D9E1F440D9E00C1E66C /* Sources */,
+				38920D9F1F440D9E00C1E66C /* Frameworks */,
+				38920DA01F440D9E00C1E66C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UITextInputAccessoryView;
-			productName = UIInputAccessoryView;
-			productReference = 38920D811F41362900C1E66C /* UITextInputAccessoryView.app */;
+			name = UITagInputView;
+			productName = UITagInputView;
+			productReference = 38920DA21F440D9E00C1E66C /* UITagInputView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		38920D791F41362900C1E66C /* Project object */ = {
+		38920D9A1F440D9E00C1E66C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Nathan Tannar";
 				TargetAttributes = {
-					38920D801F41362900C1E66C = {
+					38920DA11F440D9E00C1E66C = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9EUCWD26TP;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 38920D7C1F41362900C1E66C /* Build configuration list for PBXProject "UITextInputAccessoryView" */;
+			buildConfigurationList = 38920D9D1F440D9E00C1E66C /* Build configuration list for PBXProject "UITagInputView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -109,46 +118,49 @@
 				en,
 				Base,
 			);
-			mainGroup = 38920D781F41362900C1E66C;
-			productRefGroup = 38920D821F41362900C1E66C /* Products */;
+			mainGroup = 38920D991F440D9E00C1E66C;
+			productRefGroup = 38920DA31F440D9E00C1E66C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				38920D801F41362900C1E66C /* UITextInputAccessoryView */,
+				38920DA11F440D9E00C1E66C /* UITagInputView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		38920D7F1F41362900C1E66C /* Resources */ = {
+		38920DA01F440D9E00C1E66C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38920D891F41362900C1E66C /* Assets.xcassets in Resources */,
-				38920D8C1F41362A00C1E66C /* LaunchScreen.storyboard in Resources */,
+				38920DAA1F440D9E00C1E66C /* Assets.xcassets in Resources */,
+				38920DAD1F440D9E00C1E66C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		38920D7D1F41362900C1E66C /* Sources */ = {
+		38920D9E1F440D9E00C1E66C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38920D871F41362900C1E66C /* ViewController.swift in Sources */,
-				38920D941F41363900C1E66C /* UITextInputAccessoryView.swift in Sources */,
-				38920D851F41362900C1E66C /* AppDelegate.swift in Sources */,
+				38920DA81F440D9E00C1E66C /* ViewController.swift in Sources */,
+				38920DBB1F440DDD00C1E66C /* UITagInputView.swift in Sources */,
+				38920DC11F44DE8700C1E66C /* UITagButton.swift in Sources */,
+				38920DA61F440D9E00C1E66C /* AppDelegate.swift in Sources */,
+				38920DBF1F44DE6500C1E66C /* UITagDeleteButton.swift in Sources */,
+				38920DBD1F44128E00C1E66C /* UITextInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		38920D8A1F41362A00C1E66C /* LaunchScreen.storyboard */ = {
+		38920DAB1F440D9E00C1E66C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				38920D8B1F41362A00C1E66C /* Base */,
+				38920DAC1F440D9E00C1E66C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -156,7 +168,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		38920D8E1F41362A00C1E66C /* Debug */ = {
+		38920DAF1F440D9E00C1E66C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -207,7 +219,7 @@
 			};
 			name = Debug;
 		};
-		38920D8F1F41362A00C1E66C /* Release */ = {
+		38920DB01F440D9E00C1E66C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -251,27 +263,27 @@
 			};
 			name = Release;
 		};
-		38920D911F41362A00C1E66C /* Debug */ = {
+		38920DB21F440D9E00C1E66C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
-				INFOPLIST_FILE = UIInputAccessoryView/Info.plist;
+				INFOPLIST_FILE = UITagInputView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITextInputAccessoryView;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITagInputView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		38920D921F41362A00C1E66C /* Release */ = {
+		38920DB31F440D9E00C1E66C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
-				INFOPLIST_FILE = UIInputAccessoryView/Info.plist;
+				INFOPLIST_FILE = UITagInputView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITextInputAccessoryView;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nathantannar.UITagInputView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -280,24 +292,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38920D7C1F41362900C1E66C /* Build configuration list for PBXProject "UITextInputAccessoryView" */ = {
+		38920D9D1F440D9E00C1E66C /* Build configuration list for PBXProject "UITagInputView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				38920D8E1F41362A00C1E66C /* Debug */,
-				38920D8F1F41362A00C1E66C /* Release */,
+				38920DAF1F440D9E00C1E66C /* Debug */,
+				38920DB01F440D9E00C1E66C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38920D901F41362A00C1E66C /* Build configuration list for PBXNativeTarget "UITextInputAccessoryView" */ = {
+		38920DB11F440D9E00C1E66C /* Build configuration list for PBXNativeTarget "UITagInputView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				38920D911F41362A00C1E66C /* Debug */,
-				38920D921F41362A00C1E66C /* Release */,
+				38920DB21F440D9E00C1E66C /* Debug */,
+				38920DB31F440D9E00C1E66C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 38920D791F41362900C1E66C /* Project object */;
+	rootObject = 38920D9A1F440D9E00C1E66C /* Project object */;
 }

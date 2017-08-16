@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextInputAccessoryViewDelegate {
+class ViewController: UIViewController, UITextInputAccessoryViewDelegate, UITextViewDelegate {
     
-    let inputBar = FacebookInputBar()
+    let inputBar = UITextInputAccessoryView()
     
     override var inputAccessoryView: UIView? {
         return inputBar
@@ -24,8 +24,11 @@ class ViewController: UIViewController, UITextInputAccessoryViewDelegate {
         super.viewDidLoad()
         
         inputBar.delegate = self
-        inputBar.isTranslucent = true
-        inputBar.isTranslucent = false
+//        inputBar.isTranslucent = true
+        inputBar.textView.delegate = self
+        inputBar.tintColor = .red
+        inputBar.alwaysHideAccessoryButton = true
+        inputBar.alwaysHideAccessoryButton = false
     }
 
     func textInput(_ textInput: UITextInputAccessoryView, contentSizeDidChangeTo size: CGSize) {

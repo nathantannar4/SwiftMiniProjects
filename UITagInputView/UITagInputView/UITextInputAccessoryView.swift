@@ -1,6 +1,6 @@
 //
-//  UIInputAccessoryView.swift
-//  UIInputAccessoryView
+//  UITextInputAccessoryView.swift
+//  UITextInputAccessoryView
 //
 //  Copyright © 2017 Nathan Tannar.
 //
@@ -32,6 +32,7 @@ public protocol UITextInputAccessoryViewDelegate: NSObjectProtocol {
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, contentSizeDidChangeTo Size: CGSize)
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, textDidChangeTo text: String)
     @objc optional func textInput(_ textInput: UITextInputAccessoryView, didPressSendButtonWith text: String)
+    @objc optional func textInput(_ textInput: UITextInputAccessoryView, didPressAccessoryButtonWith text: String)
 }
 
 open class UITextInputAccessoryView: UIView {
@@ -40,8 +41,8 @@ open class UITextInputAccessoryView: UIView {
     
     open weak var delegate: UITextInputAccessoryViewDelegate?
     
-    open let textView: InputTextView = {
-        let textView = InputTextView()
+    open let textView: TextInputView = {
+        let textView = TextInputView()
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         textView.textColor = .black
@@ -59,16 +60,62 @@ open class UITextInputAccessoryView: UIView {
     }()
     
     open lazy var sendButton: UIButton = { [unowned self] in
-        let button = UIButton()
+        
+        class CustomButton: UIButton {
+            
+            override func tintColorDidChange() {
+                super.tintColorDidChange()
+                setTitleColor(tintColor, for: .normal)
+                setTitleColor(tintColor.withAlphaComponent(0.3), for: .highlighted)
+            }
+        }
+        
+        let button = CustomButton()
         button.setTitle("Send", for: .normal)
-        button.setTitleColor(.lightBlue, for: .normal)
-        button.setTitleColor(UIColor.lightBlue.withAlphaComponent(0.3), for: .highlighted)
+        button.tintColor = .lightBlue
         button.setTitleColor(.lightGray, for: .disabled)
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         button.isEnabled = false
         button.contentHorizontalAlignment = .center
         button.contentVerticalAlignment = .center
         button.addTarget(self, action: #selector(didPressSendButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    open lazy var accessoryButton: UIButton = { [unowned self] in
+        
+        class CustomButton: UIButton {
+            
+            private var originalTint: UIColor?
+            
+            override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+                super.touchesBegan(touches, with: event)
+                originalTint = tintColor
+                tintColor = tintColor.withAlphaComponent(0.3)
+            }
+            
+            override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+                super.touchesEnded(touches, with: event)
+                tintColor = originalTint
+            }
+            
+            override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+                super.touchesCancelled(touches, with: event)
+                tintColor = originalTint
+            }
+        }
+        
+        let button = CustomButton()
+        button.tintColor = .white
+        button.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        button.adjustsImageWhenHighlighted = false
+        let image = UIImage(named: "icons8-plus_math")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.backgroundColor = .lightBlue
+        button.layer.cornerRadius = self.accessoryButtonWidth / 2
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.addTarget(self, action: #selector(didPressAccessoryButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -85,27 +132,57 @@ open class UITextInputAccessoryView: UIView {
         }
     }
     
+    open var alwaysHideAccessoryButton: Bool = false {
+        willSet {
+            isAccessoryButtonHidden = alwaysHideAccessoryButton
+        }
+        didSet {
+            isAccessoryButtonHidden = alwaysHideAccessoryButton
+        }
+    }
+    
+    open var isAccessoryButtonHidden: Bool {
+        get {
+            return textViewLeftAnchor?.constant == padding / 2
+        }
+        set {
+            if alwaysHideAccessoryButton {
+                return
+            }
+            layoutIfNeeded()
+            let isHidden = isAccessoryButtonHidden
+            UIView.animate(withDuration: 0.3) {
+                self.textViewLeftAnchor?.constant = isHidden ? self.padding + self.accessoryButtonWidth : self.padding / 2
+                self.layoutIfNeeded()
+            }
+        }
+    }
+    
     open var padding: CGFloat {
         return 8
     }
     
+    open var accessoryButtonWidth: CGFloat {
+        return 30
+    }
+    
     private var previousContentSize: CGSize = .zero
     private var nonTranslucentBackgroundColor: UIColor? = .white
+    private var textViewLeftAnchor: NSLayoutConstraint?
     
-    // MARK: - Initializers
+    // MARK: - Initialization
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
         setupSubviews()
         setupConstraints()
+        setupGestureRecognizers()
         
         backgroundColor = .white
         autoresizingMask = .flexibleHeight
         
         NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(notification:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(notification:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     
@@ -123,11 +200,30 @@ open class UITextInputAccessoryView: UIView {
     
     // MARK: - Methods
     
+    open override func tintColorDidChange() {
+        super.tintColorDidChange()
+        sendButton.tintColor = tintColor
+        accessoryButton.backgroundColor = tintColor
+    }
+    
     open func orientationDidChange(_ notification: Notification) {
         invalidateIntrinsicContentSize()
     }
     
+    open func showAccessoryButton() {
+        layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) {
+            self.textViewLeftAnchor?.constant = self.padding + self.accessoryButtonWidth
+            self.layoutIfNeeded()
+        }
+    }
+    
     open  func textViewDidChange(_ notification: Notification) {
+        if textView.text.isEmpty && isAccessoryButtonHidden {
+            isAccessoryButtonHidden = false
+        } else if !textView.text.isEmpty && !isAccessoryButtonHidden {
+            isAccessoryButtonHidden = true
+        }
         let trimmedText = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         sendButton.isEnabled = !trimmedText.isEmpty
         delegate?.textInput?(self, textDidChangeTo: trimmedText)
@@ -153,34 +249,55 @@ open class UITextInputAccessoryView: UIView {
         return size
     }
     
-    open func didPressSendButton(_ sender: AnyObject?) {
-        delegate?.textInput?(self, didPressSendButtonWith: textView.text)
-    }
-    
     open func setupSubviews() {
         
-        addSubview(textView)
         addSubview(sendButton)
+        addSubview(accessoryButton)
+        addSubview(textView)
     }
     
     open func setupConstraints() {
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         sendButton.translatesAutoresizingMaskIntoConstraints = false
+        accessoryButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        textViewLeftAnchor = textView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding + accessoryButtonWidth)
         _ = [
+            accessoryButton.centerYAnchor.constraint(equalTo: sendButton.centerYAnchor),
+            accessoryButton.leftAnchor.constraint(equalTo: leftAnchor, constant: padding / 2),
+            accessoryButton.widthAnchor.constraint(equalToConstant: accessoryButtonWidth),
+            accessoryButton.heightAnchor.constraint(equalToConstant: accessoryButtonWidth),
             textView.topAnchor.constraint(equalTo: topAnchor, constant: padding / 2),
             textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding / 2),
-            textView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding / 2),
             textView.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -padding / 2),
-            sendButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            sendButton.bottomAnchor.constraint(equalTo: bottomAnchor),
             sendButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding / 2),
             sendButton.widthAnchor.constraint(equalToConstant: 60),
             sendButton.heightAnchor.constraint(equalToConstant: 44)
         ].map { $0.isActive = true }
+        textViewLeftAnchor?.isActive = true
+    }
+    
+    open func setupGestureRecognizers() {
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(showAccessoryButton))
+        swipeGesture.direction = .right
+        textView.addGestureRecognizer(swipeGesture)
+    }
+    
+    // MARK: - Actions 
+    
+    open func didPressSendButton(_ sender: AnyObject?) {
+        delegate?.textInput?(self, didPressSendButtonWith: textView.text)
+    }
+    
+    open func didPressAccessoryButton(_ sender: AnyObject?) {
+        delegate?.textInput?(self, didPressAccessoryButtonWith: textView.text)
     }
 }
 
-open class InputTextView: UITextView {
+open class TextInputView: UITextView {
     
     // MARK: - Properties
     
@@ -272,6 +389,7 @@ open class InputTextView: UITextView {
         setNeedsDisplay()
     }
 }
+
 
 public extension UIColor {
     
