@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:UIExpandableCollectionView/UIExpandableCollectionView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIActivityViewController/UIActivityViewController.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:/Users/nathantannar/Documents/Active iOS Projects/SwiftMiniProjects/UIInputAccessoryView/UITextInputAccessoryView.xcodeproj">
    </FileRef>
    <FileRef

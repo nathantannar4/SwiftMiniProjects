@@ -99,6 +99,10 @@ extension UIMapViewController: MKMapViewDelegate {
     
     // MARK: - MKMapViewDelegate
     
+    class AnnotationViewDetailButton: UIButton {
+        weak var view: MapAnnotationView?
+    }
+    
     open func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -116,10 +120,24 @@ extension UIMapViewController: MKMapViewDelegate {
         } else {
             view = MapAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             view.canShowCallout = true
-            //view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+            
+            let detailButton = AnnotationViewDetailButton(type: .detailDisclosure)
+            detailButton.view = view
+            detailButton.addTarget(self, action: #selector(handleDetailButton(_:)), for: .touchUpInside)
+            view.rightCalloutAccessoryView = detailButton as UIView
         }
         return view
+    }
+    
+    open func mapView(_ mapView: MKMapView, didSelectDetailDisclosureFor view: MapAnnotationView) {
+        // Made to be overwritten
+    }
+    
+    func handleDetailButton(_ sender: AnnotationViewDetailButton) {
+        guard let view = sender.view else {
+            return
+        }
+        mapView(mapView, didSelectDetailDisclosureFor: view)
     }
 }
 
@@ -134,8 +152,6 @@ extension UIMapViewController: CLLocationManagerDelegate {
         }
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-        
-        //        mapView.setRegion(region, animated: true)
     }
     
     open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -148,7 +164,6 @@ extension UIMapViewController: CLLocationManagerDelegate {
             // Location services are authorised, track the user.
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
-            print("Location use authorized")
             
         case .denied, .restricted:
             // Location services not authorised, stop tracking the user.
@@ -208,7 +223,7 @@ open class MapAnnotationView: MKPinAnnotationView {
 
 open class MapAnnotation: NSObject, MKAnnotation {
     
-    open weak var object: AnyObject?
+    open var object: AnyObject?
     open var title: String?
     open var subtitle: String?
     open var coordinate: CLLocationCoordinate2D

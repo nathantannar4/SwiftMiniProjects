@@ -84,3 +84,17 @@ Use the `isUITranslucent` property to easily set all of the UI elements `isTrans
 Confroms to `UICollectionViewDelegateFlowLayout` for sizing and spacing
 
 <img src="./UICollectionViewStretchyLayout/Demo.gif" width="242" height="432">
+
+### UIMapViewController
+
+A baseline to start integrating a map view into your project. 
+
+### UITagInputView
+
+### UITextInputAccessoryView
+
+Add a beautiful input accessory view to handle messaging, user comments and more in just a few lines of code. Delegates make handling the actions easy.
+
+### UIActivityViewController
+
+Give it a task to execute on the main thread.
