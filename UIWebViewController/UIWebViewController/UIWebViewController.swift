@@ -34,6 +34,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         let webView = UIWebView()
         webView.allowsInlineMediaPlayback = true
         webView.allowsLinkPreview = true
+        webView.backgroundColor = .white
         return webView
     }()
     
@@ -95,6 +96,7 @@ open class UIWebViewController: UIViewController, UIWebViewDelegate, UISearchBar
         webView.delegate = self
         webView.scrollView.delegate = self
         view.addSubview(webView)
+        view.backgroundColor = .white
         
         navigationController?.navigationItem.leftBarButtonItem?.title = String()
         navigationController?.navigationItem.rightBarButtonItem = navigationItem(#imageLiteral(resourceName: "icon_share"), action: #selector(UIWebViewController.handleShare(_:)))

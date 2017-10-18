@@ -31,7 +31,7 @@ class ViewController: UITableViewController {
         let urlString = vc.makeValidURL(with: urls[indexPath.row])
         vc.url = URL(string: urlString)
         vc.loadRequest(forURL: vc.url)
-        vc.isUITranslucent = true
+//        vc.isUITranslucent = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

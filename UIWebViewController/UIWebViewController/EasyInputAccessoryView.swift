@@ -43,9 +43,9 @@ open class EasyInputAccessoryView: UIView {
             guard let vc = controller else {
                 return
             }
-            NotificationCenter.default.addObserver(self, selector: #selector(InputAccessoryView.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(InputAccessoryView.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(InputAccessoryView.keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(EasyInputAccessoryView.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(EasyInputAccessoryView.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(EasyInputAccessoryView.keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
             vc.view.addSubview(self)
             
             translatesAutoresizingMaskIntoConstraints = false

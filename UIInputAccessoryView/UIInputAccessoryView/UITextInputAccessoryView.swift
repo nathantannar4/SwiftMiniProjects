@@ -177,6 +177,7 @@ open class UITextInputAccessoryView: UIView {
         
         setupSubviews()
         setupConstraints()
+        setupGestureRecognizers()
         
         backgroundColor = .white
         autoresizingMask = .flexibleHeight

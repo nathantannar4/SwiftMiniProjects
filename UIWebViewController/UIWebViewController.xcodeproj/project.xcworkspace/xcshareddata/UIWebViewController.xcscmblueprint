@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "47E1FC471ED077254DFB79BB53F78685712A0E64",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4355DFA5F6FEF80291C3BB9FFC9083D67EE36B3F" : 9223372036854775807,
+    "47E1FC471ED077254DFB79BB53F78685712A0E64" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E086179A-A8BD-408F-B030-6EE1169A601E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4355DFA5F6FEF80291C3BB9FFC9083D67EE36B3F" : "SwiftMiniProjects\/NTToolKit\/",
+    "47E1FC471ED077254DFB79BB53F78685712A0E64" : "SwiftMiniProjects\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "UIWebViewController",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "UIWebViewController\/UIWebViewController.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nathantannar4\/NTToolKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4355DFA5F6FEF80291C3BB9FFC9083D67EE36B3F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nathantannar4\/SwiftMiniProjects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "47E1FC471ED077254DFB79BB53F78685712A0E64"
+    }
+  ]
+}
