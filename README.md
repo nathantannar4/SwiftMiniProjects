@@ -93,12 +93,4 @@ A baseline to start integrating a map view into your project.
 
 <img src="./UIInputAccessoryView/Demo.png" width="242" height="432">
 
-### UITextInputAccessoryView
 
-Add a beautiful input accessory view to handle messaging, user comments and more in just a few lines of code. Delegates make handling the actions easy.
-
-<img src="./UIInputAccessoryView/Demo.png" width="242" height="432">
-
-### UIActivityViewController
-
-Give it a task to execute on the main thread.
